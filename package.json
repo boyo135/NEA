@@ -1,8 +1,8 @@
 {
     "scripts": {
-        "start": "node helloWorld.js"
+        "start": "node mathUtils.js"
     },
-    "dependencies": {
-        "dotenv": "^16.4.5"
+    "devDependencies": {
+        "vitest": "^2.0.5"
     }
 }
