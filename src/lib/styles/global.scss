@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --txt-1: #000000;
+    --txt-2: #a7a7a7;
+
+    --cta-1: #ff3b5c;
+    --cta-2: #f7d4da;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: "Roboto", sans-serif;
+}
+
+.fontW100 {
+    font-weight: 100
+}
+.fontW300 {
+    font-weight: 300
+}
+.fontW500 {
+    font-weight: 500
+}
+.fontW700 {
+    font-weight: 700
+}
+.fontW900 {
+    font-weight: 900
+}
+
+// Only for text that is italic but 
+// should not be emphasised by screen readers
+.italic {
+    font-style: italic;
+}
+
+
+input[type=text],
+input[type=password] {
+    background: none;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-radius: 0;
+
+    caret-color: auto;
+    float: left;
+
+    &:focus {
+        outline: none;
+    }
+}
