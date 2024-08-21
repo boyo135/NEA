@@ -81,7 +81,7 @@
         >.loginPage__container__image {
             grid-area: image;
 
-            overflow: hidden;
+            
             position: relative;
 
             >.loginPage__image {
@@ -89,6 +89,8 @@
                 height: 100%;
                 object-fit: cover;
                 object-position: left center;
+
+                filter: drop-shadow(-1rem -1rem 1rem rgba(0, 0, 0, 0.2));
             }
         }
     }
