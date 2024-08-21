@@ -19,3 +19,9 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Assets
+src/lib/assets/images/*
+
+# Git
+!.gitkeep
