@@ -27,11 +27,11 @@
             </button>
         </svelte:fragment>
         <button class="button-pill" type="submit">
-            <p class="fontW700">Login</p>
+            <p class="fontW700 fontS100">Login</p>
         </button>
-        <button class="button-pill alt" type="button">
-            <p class="fontW700">Register</p>
-        </button>
+        <a class="button button-pill alt" href="/login?type=register">
+            <p class="fontW700 fontS100">Register</p>
+        </a>
     </Form>
     <div class="loginPage__container__image">
         <img class="loginPage__image" src={healthyFoodSrc} alt="Fruit"/>
