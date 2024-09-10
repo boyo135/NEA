@@ -1,7 +1,9 @@
-import { users } from './user/schema.js'
+import { user } from './user/schema.js'
+import { food } from './food/schema.js'
 
 const tables = {
-    users
+    user,
+    food
 }
 
 export { tables }

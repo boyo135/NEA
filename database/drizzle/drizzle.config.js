@@ -7,5 +7,5 @@ export default {
     out: 'database/drizzle/out',
     migrations: {
         prefix: 'timestamp',
-    },
+    }
 }

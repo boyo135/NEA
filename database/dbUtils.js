@@ -12,25 +12,28 @@ const createDb = (path = 'database/.db') => {
 
 
 const createDbClient = (db = null) => {
-    if (db) return drizzle(db)
-
-    return drizzle(createDb())
+    return drizzle(
+        db ? db : createDb(),
+        {
+            schema: { ...tables }
+        }
+    )
 }
 // #endregion
 
 
 
 // #region Exports
-const db = createDbClient()
+const dbClient = createDbClient()
 
 const dbUtils = {
     createDb,
     createDbClient,
-    db,
+    dbClient,
     tables
 }
 
 export default dbUtils
 
-export { createDb, createDbClient, db, tables }
+export { createDb, createDbClient, dbClient, tables }
 // #endregion
