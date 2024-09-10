@@ -1,14 +1,31 @@
-// #region Actions
-export const actions = {
-    // #region Default
-    default: async ({ request }) => {
-        const FormInputs = Object.fromEntries(await request.formData())
+const getFormInputs = async (request) => {
+    return Object.fromEntries(await request.formData())
+}
 
+
+
+// #region Actions
+/** @type {import('./types').Action} */
+export const actions = {
+    // #region Login
+    login: async ({ request }) => {
         return {
             status: 200,
             data: {
-                message: "form submission successful",
-                formInputs: FormInputs
+                message: "login action ran",
+                formInputs: await getFormInputs(request)
+            }
+        }
+    },
+    // #endregion
+
+    // #region Register
+    register: async ({ request }) => {
+        return {
+            status: 200,
+            data: {
+                message: "login action ran",
+                formInputs: await getFormInputs(request)
             }
         }
     }

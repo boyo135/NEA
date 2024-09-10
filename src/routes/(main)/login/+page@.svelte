@@ -2,37 +2,75 @@
     import { page } from '$app/stores'
     import Form from '$lib/components/Inputs/Form.svelte'
 
+    import healthyFoodSrc from '$lib/assets/images/healthyFood.png'
+    
+
+    $: LoadData = $page.data
+    $: {
+        if (LoadData) {
+            console.log(JSON.stringify(LoadData, null, 4))
+        }
+    }
+
     $: FormResponse = $page.form
     $: {
         if (FormResponse) {
             console.log(JSON.stringify(FormResponse, null, 4))
         }
     }
-
-    import healthyFoodSrc from '$lib/assets/images/healthyFood.png'
 </script>
 
 <div class="container__loginPage">
-    <h1 class="loginPage__title">Login</h1>
-    <Form class="loginPage__form">
-        <svelte:fragment slot="inputs">
-            <input name="username" id="username" type="text"
-                placeholder="Username"
-            >
-            <input name="password" id="password" type="password"
-                placeholder="Password"
-            >
-            <button class="button-slim" type="button">
-                <p class="fontW500">Forgot Password?</p>
+    <h1 class="loginPage__title">{
+            LoadData.formType === 'login' ? 'Login' :
+            LoadData.formType === 'register' ? 'Register' :
+            null
+        }
+    </h1>
+    {#if LoadData.formType === 'login'}
+        <Form class="loginPage__form" action="?/login">
+            <svelte:fragment slot="inputs">
+                <input name="username" id="username" type="text"
+                    placeholder="Username"
+                >
+                <input name="password" id="password" type="password"
+                    placeholder="Password"
+                >
+                <button class="button-slim" type="button">
+                    <p class="fontW500">Forgot Password?</p>
+                </button>
+            </svelte:fragment>
+            <button class="button-pill" type="submit">
+                <p class="fontW700 fontS100">Login</p>
             </button>
-        </svelte:fragment>
-        <button class="button-pill" type="submit">
-            <p class="fontW700 fontS100">Login</p>
-        </button>
-        <a class="button button-pill alt" href="/login?type=register">
-            <p class="fontW700 fontS100">Register</p>
-        </a>
-    </Form>
+            <a class="button button-pill alt" href="/login?type=register">
+                <p class="fontW700 fontS100">Create Account</p>
+            </a>
+        </Form>
+    {:else if LoadData.formType === 'register'}
+        <Form class="loginPage__form" action="?/register">
+            <svelte:fragment slot="inputs">
+                <input name="username" id="username" type="text"
+                    placeholder="Username"
+                >
+                <input name="email" id="email" type="text"
+                    placeholder="Email"
+                >
+                <input name="password" id="password" type="password"
+                    placeholder="Password"
+                >
+                <input name="confirmPassword" id="confirmPassword" type="password"
+                    placeholder="Confirm Password"
+                >
+            </svelte:fragment>
+            <button class="button-pill" type="submit">
+                <p class="fontW700 fontS100">Register</p>
+            </button>
+            <a class="button button-pill alt" href="/login?type=login">
+                <p class="fontW700 fontS100">Log into existing account</p>
+            </a>
+        </Form>
+    {/if}
     <div class="loginPage__container__image">
         <img class="loginPage__image" src={healthyFoodSrc} alt="Fruit"/>
     </div>
