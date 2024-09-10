@@ -18,6 +18,7 @@
 
 html {
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
 }
 
 .fontW100 {
@@ -78,4 +79,23 @@ input[type=password] {
     &:focus {
         outline: none;
     }
+
+    // TODO: Remove default autofill styles
+    // &:-webkit-autofill,
+    // &:-webkit-autofill:hover,
+    // &:-webkit-autofill:focus,
+    // &:-webkit-autofill:active,
+    // &:-moz-autofill,
+    // &:-o-autofill,
+    // &:-ms-autofill,
+    // &::autofill {
+    //     background-color: rgba(0, 0, 0, 0);
+    //     font-size: inherit;
+    //     color: inherit;
+
+    //     -webkit-background-clip: text;
+    //     -webkit-text-fill-color: black;
+
+    //     -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0) inset !important;
+    // }
 }

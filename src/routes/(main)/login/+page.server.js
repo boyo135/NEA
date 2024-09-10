@@ -24,7 +24,7 @@ export const actions = {
         return {
             status: 200,
             data: {
-                message: "login action ran",
+                message: "register action ran",
                 formInputs: await getFormInputs(request)
             }
         }
