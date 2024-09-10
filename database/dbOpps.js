@@ -1,20 +1,35 @@
+// #region Imports
 import { dbClient, tables } from './dbUtils.js'
+// #endregion
 
-await dbClient.delete(tables.user)
-await dbClient.insert(tables.user).values(
-    [
-        {
-            username: 'Bailey',
-            email: 'bailey@email.com',
-            password: 'BaileyTheBoss'
-        },
-        {
-            username: "Fawzia",
-            email: "fawzia@email.com",
-            password: "FawPow"
+
+
+// #region Operations
+const createUser = async (fieldValues) => {
+    const matchingUsers = await dbClient.query.user.findMany({
+        where: (user, { or, eq }) => or(
+            eq(user.username, fieldValues.username),
+            eq(user.email, fieldValues.email)
+        )
+    })
+
+    const matchingFields = []
+    for (const match of matchingUsers) {
+        if (match.username === fieldValues.username) {
+            matchingFields.push('username')
         }
-    ]
-)
-const result = await dbClient.query.user.findMany()
+        if (match.email === fieldValues.email) {
+            matchingFields.push('email')
+        }
+    }
+    if (matchingFields) return {
+        error: 'Unique constraint failed',
+        fields: matchingFields
+    }
 
-console.log(result)
+    await dbClient.insert(tables.user).values(fieldValues)
+    return {
+        success: true
+    }
+}
+// #endregion
