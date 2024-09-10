@@ -2,7 +2,7 @@
     import { enhance } from '$app/forms'
 
     // Default to current route
-    export const action = "?"
+    export let action = "?"
 </script>
 
 <form method='POST' action={action} use:enhance {...$$restProps}>
