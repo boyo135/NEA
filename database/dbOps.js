@@ -22,7 +22,7 @@ const createUser = async (fieldValues) => {
             matchingFields.push('email')
         }
     }
-    if (matchingFields) return {
+    if (matchingFields.length > 0) return {
         error: 'Unique constraint failed',
         fields: matchingFields
     }
