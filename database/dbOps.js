@@ -33,3 +33,14 @@ const createUser = async (fieldValues) => {
     }
 }
 // #endregion
+
+
+
+// #region exports
+const dbOps = {
+    createUser,
+}
+
+export default dbOps
+
+// #endregion

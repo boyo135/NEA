@@ -1,3 +1,9 @@
+//region imports
+import dbOps from '../../../../database/dbOps.js'
+//endregion
+
+
+
 const getFormInputs = async (request) => {
     return Object.fromEntries(await request.formData())
 }
@@ -21,11 +27,23 @@ export const actions = {
 
     // #region Register
     register: async ({ request }) => {
+        const formInputs = await getFormInputs(request)
+
+        if (formInputs.confirmPassword !== formInputs.password) return {
+            status: 400,
+            error: "Passwords do not match"
+        }
+
+        const result = await dbOps.createUser({
+            username: formInputs.username,
+            email: formInputs.email,
+            password: formInputs.password
+        })
+        console.log(result)
         return {
             status: 200,
             data: {
-                message: "register action ran",
-                formInputs: await getFormInputs(request)
+                message: "register action ran"
             }
         }
     }
