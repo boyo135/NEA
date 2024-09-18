@@ -39,7 +39,14 @@ export const actions = {
             email: formInputs.email,
             password: formInputs.password
         })
-        console.log(result)
+
+        if (result.error) {
+            return {
+                status: 400,
+                error: "Could not create user entry"
+            }
+        }
+
         return {
             status: 200,
             data: {
