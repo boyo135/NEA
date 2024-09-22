@@ -27,8 +27,9 @@ const createUser = async (fieldValues) => {
         fields: matchingFields
     }
 
-    await dbClient.insert(tables.user).values(fieldValues)
+    const user = (await dbClient.insert(tables.user).values(fieldValues).returning())[0]
     return {
+        user: user,
         success: true
     }
 }
