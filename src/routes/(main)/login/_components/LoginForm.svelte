@@ -1,10 +1,28 @@
 <script>
     import Form from '$lib/components/Inputs/Form.svelte'
+
+    export let waiting = false
 </script>
 
 
 
-<Form class="loginPage__form" action="?/login">
+<Form action="?/login"
+    class={
+        "loginPage__form " + 
+        (waiting ? "disabled" : "")
+    }
+
+    onSubmit={() => {
+        waiting = true
+
+        return async ({ update }) => {
+            waiting = false
+            await update()
+        }
+    }}
+
+    {...$$restProps}
+>
     <svelte:fragment slot="inputs">
         <input class="fontS100" name="username" id="username" type="text"
             placeholder="Username"

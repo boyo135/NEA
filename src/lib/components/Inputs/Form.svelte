@@ -2,10 +2,17 @@
     import { enhance } from '$app/forms'
 
     // Default to current route
-    export let action = "?"
+    export let action = '?'
+
+    // Default to basic action
+    export let onSubmit = () => {
+        return async ({ update }) => {
+            await update()
+        }
+    }
 </script>
 
-<form method='POST' action={action} use:enhance {...$$restProps}>
+<form method="POST" action={action} {...$$restProps} use:enhance={onSubmit}>
     <div class="inputs">
         <slot name="inputs"/>
     </div>
@@ -17,6 +24,13 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        &.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+
+            transition: opacity ease-in-out 300ms;
+        }
 
         >.inputs {
             :global(input + input) {

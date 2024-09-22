@@ -23,6 +23,8 @@ export const actions = {
             }
         }
     },
+
+    
     // #endregion
 
     // #region Register
@@ -50,6 +52,7 @@ export const actions = {
         return {
             status: 200,
             data: {
+                result: result,
                 message: "register action ran"
             }
         }
