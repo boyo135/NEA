@@ -28,7 +28,7 @@ export const actions = {
     // #endregion
 
     // #region Register
-    register: async ({ request }) => {
+    register: async ({ request, cookies }) => {
         const formInputs = await getFormInputs(request)
 
         if (formInputs.confirmPassword !== formInputs.password) return {
@@ -42,17 +42,24 @@ export const actions = {
             password: formInputs.password
         })
 
-        if (result.error) {
+        if (!result.success) {
             return {
                 status: 400,
                 error: "Could not create user entry"
             }
         }
 
+        cookies.set('userId', result.user.id, {
+            path: '/',
+            maxAge: 1000000000,
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: false
+        })
+
         return {
             status: 200,
             data: {
-                result: result,
                 message: "register action ran"
             }
         }
