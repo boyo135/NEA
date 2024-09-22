@@ -33,6 +33,37 @@ const createUser = async (fieldValues) => {
         success: true
     }
 }
+
+
+const getUser = async (fieldFilters) => {
+    /*
+        fieldFilters = {
+            id?: String,
+            username?: String,
+            etc...
+        }
+    */
+    
+    const user = await dbClient.query.user.findFirst({
+        where: (user, { and, eq }) => and(
+            ...Object.entries(fieldFilters).map(([key, value]) => {
+                return eq(user[key], value)
+            })
+
+            /*
+                eq(user.id, fieldFilters.id),
+                eq(user.username, fieldFilters.username),
+                etc...
+            */
+        )
+    })
+
+    return {
+        user: user,
+        success: Boolean(user)
+    }
+}
+
 // #endregion
 
 
@@ -40,6 +71,7 @@ const createUser = async (fieldValues) => {
 // #region exports
 const dbOps = {
     createUser,
+    getUser
 }
 
 export default dbOps
