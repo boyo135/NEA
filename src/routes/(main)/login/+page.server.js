@@ -14,12 +14,33 @@ const getFormInputs = async (request) => {
 /** @type {import('./types').Action} */
 export const actions = {
     // #region Login
-    login: async ({ request }) => {
+    login: async ({ request, cookies }) => {
+        const formInputs = await getFormInputs(request)
+
+        const result = await dbOps.getUser({
+            username: formInputs.username,
+            password: formInputs.password
+        })
+
+        if (!result.success) {
+            return {
+                status: 400,
+                error: "Could not get user entry"
+            }
+        }
+
+        cookies.set('userId', result.user.id, {
+            path: '/',
+            maxAge: 1000000000,
+            httpOnly: true,
+            sameSite: 'strict',
+            secure: false
+        })
+
         return {
             status: 200,
             data: {
-                message: "login action ran",
-                formInputs: await getFormInputs(request)
+                message: "login action ran"
             }
         }
     },
