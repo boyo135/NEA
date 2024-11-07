@@ -21,7 +21,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"better-sqlite3": "^11.2.1",
+		"better-sqlite3": "^11.5.0",
 		"drizzle-orm": "^0.33.0"
 	}
 }
