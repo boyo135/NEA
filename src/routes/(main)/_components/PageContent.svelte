@@ -75,4 +75,5 @@ let progress = (currentCalories / totalCalories) * 100 || 0;
 .links a:hover {
     background-color: #eb6969;
 }
+
 </style>

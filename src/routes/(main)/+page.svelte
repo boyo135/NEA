@@ -1,8 +1,7 @@
 <script>
 
-import Home from './Home.svelte';
-
 import healthyFoodSrc from '$lib/assets/images/healthyFood.png'
+import PageContent from './_components/PageContent.svelte';
   
 </script>
 
@@ -13,7 +12,7 @@ import healthyFoodSrc from '$lib/assets/images/healthyFood.png'
     </div>
 
     <div class="homepage__content">
-        <Home/>
+        <PageContent/>
     </div>
 </div>
 
