@@ -26,7 +26,7 @@
   <p>Your BMI: {bmi.toFixed(2)}</p>
 {/if}
 
-<a href="/home" class="back-link">← Back to Home</a>
+<a href="/" class="back-link">← Back to Home</a>
 
 <style>
 

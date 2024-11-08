@@ -53,7 +53,7 @@
   <p>Total Calories Needed: {totalCalories.toFixed(2)}</p>
 {/if}
   
-<a href="/home" class="back-link">← Back to Home</a>
+<a href="/" class="back-link">← Back to Home</a>
 
   <style>
 
