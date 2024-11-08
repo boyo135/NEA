@@ -1,4 +1,4 @@
-import { text, sqliteTable } from 'drizzle-orm/sqlite-core'
+import { real, text, sqliteTable } from 'drizzle-orm/sqlite-core'
 import crypto from "crypto"
 
 export const user = sqliteTable("user", {
@@ -6,4 +6,6 @@ export const user = sqliteTable("user", {
     username: text('username').notNull().unique(),
     email: text('email').notNull().unique(),
     password: text('password').notNull(),
+    bmi: real("bmi"),
+    dailyCalorieIntakeTarget: real('dailyCalorieIntakeTarget')
 })
