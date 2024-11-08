@@ -27,5 +27,8 @@ database/drizzle/out
 # Assets
 src/lib/assets/images/*
 
+# Misc
+/TODO.txt
+
 # Git
 !.gitkeep
